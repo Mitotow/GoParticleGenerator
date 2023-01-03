@@ -1,7 +1,20 @@
 package particles
 
-import "project-particles/config"
+import (
+	"github.com/hajimehoshi/ebiten/v2"
+	"project-particles/config"
+)
 
 func (p Particle) InScreen() bool {
-	return !(p.PositionX < float64(config.General.WindowSizeX) && p.PositionX > -10) || (p.PositionY < float64(config.General.WindowSizeY) && p.PositionY > -10)
+	var wX, wY int
+	if ebiten.IsFullscreen() {
+		wX, wY = ebiten.ScreenSizeInFullscreen()
+	} else {
+		wX, wY = config.General.WindowSizeX, config.General.WindowSizeY
+	}
+
+	if (-10 < p.PositionX && p.PositionX < float64(wX)+10) || (-10 < p.PositionY && p.PositionY < float64(wY)+10) {
+		return true
+	}
+	return false
 }

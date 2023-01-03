@@ -22,6 +22,13 @@ func main() {
 	ebiten.SetWindowTitle(config.General.WindowTitle)
 	ebiten.SetWindowSize(config.General.WindowSizeX, config.General.WindowSizeY)
 
+	ebiten.SetWindowResizingMode(ebiten.WindowResizingModeDisabled)
+
+	if config.General.Fullscreen {
+		ebiten.SetFullscreen(true)
+		config.General.WindowSizeX, config.General.WindowSizeY = ebiten.ScreenSizeInFullscreen()
+	}
+
 	g := game{system: particles.NewSystem()}
 
 	err := ebiten.RunGame(&g)

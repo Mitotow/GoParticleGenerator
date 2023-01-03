@@ -13,11 +13,17 @@ import (
 // projet.
 // C'est à vous de développer cette fonction.
 
+var spawn = false
+var particuleToAdd = float64(0)
+
 func (s *System) Update() {
 
 	if inpututil.IsKeyJustReleased(ebiten.KeyEscape) {
 		os.Exit(0)
 	}
+
+	particuleToAdd += config.General.SpawnRate - float64(int(config.General.SpawnRate))
+	s.GenerateParticlesWithNumber(int(particuleToAdd + config.General.SpawnRate))
 
 	for e := s.Content.Front(); e != nil; e = e.Next() {
 		p := e.Value.(*Particle)
@@ -32,4 +38,9 @@ func (s *System) Update() {
 			continue
 		}
 	}
+
+	if config.General.SpawnRate == 0.5 && spawn == false {
+		spawn = true
+	}
+
 }
