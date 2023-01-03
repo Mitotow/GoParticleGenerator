@@ -10,7 +10,10 @@ import (
 // Dans sa version actuelle, cette fonction affiche une particule blanche au
 // centre de l'écran.
 func NewSystem() System {
+
 	s := System{Content: list.New()}
+
 	s.GenerateParticles()
+
 	return s
 }

@@ -1,7 +1,9 @@
 package particles
 
 import (
-	"math/rand"
+	"github.com/hajimehoshi/ebiten/v2"
+	"github.com/hajimehoshi/ebiten/v2/inpututil"
+	"os"
 	"project-particles/config"
 )
 
@@ -10,29 +12,24 @@ import (
 // 60 fois par seconde (de manière régulière) par la fonction principale du
 // projet.
 // C'est à vous de développer cette fonction.
+
 func (s *System) Update() {
-	s.GenerateParticles()
 
-	if config.General.RainingMode == true {
-		for e := s.Content.Front(); e != nil; e = e.Next() {
-			p := e.Value.(*Particle)
+	if inpututil.IsKeyJustReleased(ebiten.KeyEscape) {
+		os.Exit(0)
+	}
 
-			if p.InScreen() == false {
-				p.ScaleX, p.ScaleY = 0, 0
-				s.Content.Remove(e)
-				continue
-			}
-
-			if p.life <= 0 {
-				p.ScaleX, p.ScaleY = 0, 0
-				s.Content.Remove(e)
-				continue
+	for e := s.Content.Front(); e != nil; e = e.Next() {
+		p := e.Value.(*Particle)
+		p.PositionY += p.SpeedY
+		p.PositionX += p.SpeedX
+		if p.InScreen() == false {
+			if config.General.RandomSpawn == true {
+				p.PositionX, p.PositionY = randomPos()
 			} else {
-				p.life--
+				p.PositionX, p.PositionY = float64(config.General.SpawnX), float64(config.General.SpawnY)
 			}
-
-			p.PositionY += 1 + rand.Float64()*(10-1)
-			p.PositionX += 0 + rand.Float64()*(3-0)
+			continue
 		}
 	}
 }

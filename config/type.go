@@ -16,9 +16,6 @@ type Config struct {
 	RandomSpawn              bool
 	SpawnX, SpawnY           int
 	SpawnRate                float64
-	ParticleLifeSpan         int
-	ToggleParticleLifeSpan   bool
-	RainingMode              bool
 }
 
 var General Config

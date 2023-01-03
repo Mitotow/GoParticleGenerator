@@ -2,8 +2,8 @@ package config
 
 import (
 	"encoding/json"
-	"io/ioutil"
 	"log"
+	"os"
 )
 
 // Get récupère le contenu du fichier config.json et le stocke dans la variable
@@ -11,7 +11,7 @@ import (
 // fonction.
 func Get(fileName string) {
 
-	content, err := ioutil.ReadFile(fileName)
+	content, err := os.ReadFile(fileName)
 	if err != nil {
 		log.Fatal("Error when opening config file: ", err)
 	}
