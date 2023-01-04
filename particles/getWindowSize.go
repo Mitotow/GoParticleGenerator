@@ -5,9 +5,10 @@ import (
 	"project-particles/config"
 )
 
-func getScreenSize() (int, int) {
+func getWindowSize() (int, int) {
 	if ebiten.IsFullscreen() {
-		return ebiten.ScreenSizeInFullscreen()
+		// Window is in fullscreen
+		return ebiten.ScreenSizeInFullscreen() // Return the screen size of the user
 	}
-	return config.General.WindowSizeX, config.General.WindowSizeY
+	return config.General.WindowSizeX, config.General.WindowSizeY // Return by default the Window size of the config.json
 }

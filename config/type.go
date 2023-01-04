@@ -16,6 +16,7 @@ type Config struct {
 	RandomSpawn              bool
 	SpawnX, SpawnY           int
 	SpawnRate                float64
+	SpawnFrameRate           int
 	Fullscreen               bool
 }
 

@@ -7,34 +7,33 @@ import (
 
 func (s System) GenerateParticles() {
 	content := s.Content
-	x, y := float64(config.General.SpawnX), float64(config.General.SpawnY)
-	var wX, wY int
+	x, y := float64(config.General.SpawnX), float64(config.General.SpawnY) // Default spawn configurate in config.json
 	for i := 0; i < config.General.InitNumParticles; i++ {
+		// InitNumParticles is the amount of particule(s) to create
 		if config.General.RandomSpawn {
-			wX, wY = getScreenSize()
-			x, y = rand.Float64()*float64(wX), rand.Float64()*float64(wY)
+			// RandomSpawn enable
+			x, y = randomPos() // Get random coordonates
 		}
-		spY := 1 + rand.Float64()*9
-		spX := 1 + rand.Float64()*9
-		p := createParticle(x, y, 1, 1, 1, 1, 1, 1, spY, spX)
-		content.PushFront(&p)
+		spY := 1 + rand.Float64()*9                           // Create random speed in Y
+		spX := 1 + rand.Float64()*9                           // Create random speed in X
+		p := createParticle(x, y, 1, 1, 1, 1, 1, 1, spY, spX) // Create the particule
+		content.PushFront(&p)                                 // Add the particule address to the system
 	}
 	s.Content = content
 }
 
 func (s System) GenerateParticlesWithNumber(num int) {
 	content := s.Content
-	x, y := float64(config.General.SpawnX), float64(config.General.SpawnY)
-	var wX, wY int
+	x, y := float64(config.General.SpawnX), float64(config.General.SpawnY) // Default spawn configurate in config.json
 	for i := 0; i < num; i++ {
 		if config.General.RandomSpawn {
-			wX, wY = getScreenSize()
-			x, y = rand.Float64()*float64(wX), rand.Float64()*float64(wY)
+			// RandomSpawn enable
+			x, y = randomPos() // Get random coordonates
 		}
-		spY := 1 + rand.Float64()*9
-		spX := 1 + rand.Float64()*9
-		p := createParticle(x, y, 1, 1, 1, 1, 1, 1, spY, spX)
-		content.PushFront(&p)
+		spY := 1 + rand.Float64()*9                           // Create random speed in Y
+		spX := 1 + rand.Float64()*9                           // Create random speed in X
+		p := createParticle(x, y, 1, 1, 1, 1, 1, 1, spY, spX) // Create the particule
+		content.PushFront(&p)                                 // Add the particule address to the system
 	}
 	s.Content = content
 }
