@@ -7,5 +7,6 @@ package main
 func (g *game) Update() error {
 
 	g.system.Update()
+
 	return nil
 }

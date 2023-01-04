@@ -5,10 +5,10 @@
 	"ParticleImage": "assets/particle.png",
 	"Debug": true,
 	"InitNumParticles": 1,
-	"RandomSpawn": true,
+	"RandomSpawn": false,
 	"SpawnX": 0,
 	"SpawnY": 0,
-	"SpawnRate": 0.5,
+	"SpawnRate": 1.5,
 	"SpawnFrameRate": 60,
 	"Fullscreen": false
 }

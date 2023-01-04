@@ -7,17 +7,15 @@ import (
 	"project-particles/config"
 )
 
+var particuleToAdd = float64(0)
+
+var tts = 0 // Temporisation counter (60 = 1s)
+
 // Update mets à jour l'état du système de particules (c'est-à-dire l'état de
 // chacune des particules) à chaque pas de temps. Elle est appellée exactement
 // 60 fois par seconde (de manière régulière) par la fonction principale du
 // projet.
 // C'est à vous de développer cette fonction.
-
-var particuleToAdd = float64(0)
-
-var tts = 0                                // Temporisation counter (60 = 1s)
-var maxtts = config.General.SpawnFrameRate // Temporisation counter limit
-
 func (s *System) Update() {
 
 	if inpututil.IsKeyJustReleased(ebiten.KeyEscape) {
@@ -25,11 +23,16 @@ func (s *System) Update() {
 		os.Exit(0)
 	}
 
-	if tts >= maxtts {
+	if tts >= config.General.SpawnFrameRate {
 		// Every x frame generate new particle(s)
 		particuleToAdd += config.General.SpawnRate - float64(int(config.General.SpawnRate))
 		s.GenerateParticlesWithNumber(int(particuleToAdd) + int(config.General.SpawnRate)) // Generate an amount of particule at the screen
-		tts = 0                                                                            // Restart the counter
+
+		if particuleToAdd >= 1 {
+			particuleToAdd = 0
+		}
+
+		tts = 0 // Restart the counter
 	}
 
 	for e := s.Content.Front(); e != nil; e = e.Next() {
