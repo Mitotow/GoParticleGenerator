@@ -28,7 +28,7 @@ func (g *game) Draw(screen *ebiten.Image) {
 	}
 
 	if config.General.Debug {
-		ebitenutil.DebugPrint(screen, fmt.Sprint(ebiten.ActualTPS()))
+		ebitenutil.DebugPrint(screen, fmt.Sprint("Frames : ", ebiten.ActualTPS(), " | Particules : ", g.system.Content.Len()))
 	}
 
 }

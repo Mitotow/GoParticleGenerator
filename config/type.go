@@ -14,6 +14,11 @@ type Config struct {
 	Debug                    bool
 	InitNumParticles         int
 	RandomSpawn              bool
+	RandomColor              bool
+	ColorR                   float64
+	ColorG                   float64
+	ColorB                   float64
+	Opacity                  float64
 	SpawnX, SpawnY           int
 	SpawnRate                float64
 	SpawnFrameRate           int

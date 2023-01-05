@@ -2,6 +2,7 @@ package particles
 
 import (
 	"container/list"
+	"project-particles/config"
 )
 
 // NewSystem est une fonction qui initialise un système de particules et le
@@ -13,7 +14,7 @@ func NewSystem() System {
 
 	s := System{Content: list.New()}
 
-	s.GenerateParticles()
+	s.GenerateParticles(config.General.InitNumParticles)
 
 	return s
 }

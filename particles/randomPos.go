@@ -2,11 +2,11 @@ package particles
 
 import (
 	"math/rand"
+	"project-particles/config"
 )
 
-var wX, wY = getWindowSize() // Get the actual window size (in this case configuration, it's the window size at the start of the app)
-
 func randomPos() (float64, float64) {
+	var wX, wY = config.General.WindowSizeX, config.General.WindowSizeY
 	x, y := rand.Float64()*float64(wX), rand.Float64()*float64(wY) // Create random coordonates
 	return x, y
 }
