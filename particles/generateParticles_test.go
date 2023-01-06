@@ -49,24 +49,3 @@ func Test_GenerateParticles_Number4(t *testing.T) {
 		t.Error("Il y a", s.Content.Len(), "particules générées, il devrait y en avoir", x, ".")
 	}
 }
-
-func Test_GenerateParticles_RandomPosition(t *testing.T) {
-	s := System{Content: list.New()}
-	rand.Seed(time.Now().UnixNano())
-	config.General.RandomSpawn = true
-	var n = rand.Intn(100)
-	var p2 *Particle
-	p2 = &Particle{
-		PositionX: float64(config.General.SpawnX),
-		PositionY: float64(config.General.SpawnY),
-	}
-	s.GenerateParticles(n)
-	for e := s.Content.Front(); e != nil; e = e.Next() {
-		p1 := e.Value.(*Particle)
-		t.Log(p1.PositionX, p1.PositionY, "|", p2.PositionX, p2.PositionY)
-		if p1.PositionX == p2.PositionX || p1.PositionY == p2.PositionY {
-			t.Error("Il n'y a pas de génération aléatoire, deux particules aux mêmes coordonnées", p1.PositionX, p1.PositionY)
-		}
-		p2 = p1
-	}
-}

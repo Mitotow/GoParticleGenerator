@@ -1,7 +1,6 @@
 # R1.01.SAE.eq01_AMBROISE-Thomas_GOUIN-Charly
 
 
-
 ## Pré-requis
 > Golang (à installer sur le site https://go.dev)
 
@@ -18,24 +17,39 @@ go build
 Et ensuite vous pourrez lancer le fichier 'project-particles.exe' pour lancer la génération de particule.
 
 ## Config.json
-> - WindowTitle | Choisir le nom de la fenêtre de l'application.
-> - WindowSizeX | Longueur de la fenêtre (en pixel).
-> - WindowSizeY | Largeur de la fenêtre (en pixel).
-> - ParticleImage | L'image afficher pour les particules (chemin)
+> ### <ins>Configuration de la fenêtre</ins>
+> - WindowTitle | Choisir le nom de la fenêtre.
 > - Debug | Activer l'affichage des informations en haut à gauche de l'écran (true/false)
-> - SpawnRate | Nombre de particule par apparition
-> - SpawnFrameRate | Fréquence d'apparition des nouvelles particules (60 = 1 second)
 > - Fullscreen | Choisir si l'application se lance en plein écran
-> - ParticleMovementPreset | Mouvement de particule préfait, les presets : "falling"
+> #### Seulement quand Fullscreen est false
+> - WindowSizeX | Longueur de la fenêtre (en pixel)
+> - WindowSizeY | Largeur de la fenêtre (en pixel)
+> ### <ins>Configuration des particules</ins>
+> - ParticleImage | L'image afficher pour les particules (chemin)
+> - SpawnRate | Nombre de particule par apparition
+> - TimeToSpawn | Fréquence d'apparition des nouvelles particules (60 = 1 second)
 > - InitNumParticles | Le nombre de particule à l'écran au démarrage
+> - MaxNumParticles | Le nombre maximum de particule à l'écran
 > - RandomSpawn | Apparition des particules à un endroit aléatoire (true/false)
 > - RandomColor | Apparition des particules avec une couleur aléatoire (true/false)
+> - RandomOpacity | Apparition des particules avec une opacité aléatoire (true/false)
+> - RandomScale | Apparition des particules avec une taille aléatoire (true/false)
+> - RandomSpeed | Apparition des particules avec une vitesse aléatoire (true/false)
+> #### Seulement quand RandomSpawn est false
+> - SpawnX | Gestion de la coordonnée X des particules au spawn (de 0 à longueur de la fenêtre en pixel)
+> - SpawnY | Gestion de la coordonnée Y des particules au spawn (de 0 à largeur de la fenêtre en pixel)
 > #### Seulement quand RandomColor est false 
 > - ColorR | Gestion de la nuance de Rouge des particules (de 0.0 à 1.0)
 > - ColorG | Gestion de la nuance de Vert des particules (de 0.0 à 1.0)
 > - ColorB | Gestion de la nuance de Bleu des particules (de 0.0 à 1.0)
 > #### Seulement quand RandomOpacity est false
 > - Opacity | Gestion de la Transparence des particules (de 0.0 à 1.0)
-> #### Seulement quadn RandomSpawn est false
-> - SpawnX | Gestion de la coordonnée X des particules au spawn
-> - SpawnY | Gestion de la coordonnée Y des particules au spawn
+> #### Seulement quand RandomScale est false
+> - ScaleX | Gestion de la longueur des particules (de 0.0 à 1.0)
+> - ScaleY | Gestion de la largeur des particules (de 0.0 à 1.0)
+> #### Seulement quand RandomSpeed est false
+> - SpeedX | Gestion de la vitesse horizontale des particules (minimum 1)
+> - SpeedY | Gestion de la vitesse verticale des particules (minimum 1)
+> #### Seulement quand RandomSpeed est True
+> - MaxSpeedX | Gestion de la vitesse horizontale des particules (minimum 1)
+> - MaxSpeedY | Gestion de la vitesse verticale des particules (minimum 1)

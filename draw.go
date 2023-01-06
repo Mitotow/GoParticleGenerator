@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
+	"math"
 	"project-particles/assets"
 	"project-particles/config"
 	"project-particles/particles"
@@ -28,7 +29,7 @@ func (g *game) Draw(screen *ebiten.Image) {
 	}
 
 	if config.General.Debug {
-		ebitenutil.DebugPrint(screen, fmt.Sprint("Frames : ", ebiten.ActualTPS(), " | Particules : ", g.system.Content.Len()))
+		ebitenutil.DebugPrint(screen, fmt.Sprint("Frames : ", math.Round(ebiten.ActualTPS()*100)/100, " | Particules : ", g.system.Content.Len()))
 	}
 
 }

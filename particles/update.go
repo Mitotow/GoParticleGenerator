@@ -23,10 +23,14 @@ func (s *System) Update() {
 		changeColor = true
 	}
 
-	if tts >= config.General.SpawnFrameRate {
+	if tts >= config.General.TimeToSawn {
 		// Every x frame generate new particle(s)
-		particuleToAdd += config.General.SpawnRate - float64(int(config.General.SpawnRate))
-		s.GenerateParticles(int(particuleToAdd) + int(config.General.SpawnRate)) // Generate an amount of particule at the screen
+
+		if s.Content.Len() < config.General.MaxNumParticles || config.General.MaxNumParticles == 0 {
+			// If the particle limit is not reached or the particule limit is unlimited
+			particuleToAdd += config.General.SpawnRate - float64(int(config.General.SpawnRate))
+			s.GenerateParticles(int(particuleToAdd) + int(config.General.SpawnRate)) // Generate an amount of particule at the screen
+		}
 
 		if particuleToAdd >= 1 {
 			particuleToAdd = 0

@@ -9,21 +9,25 @@ package config
 // fichier de config. Vous devrez le faire plusieurs fois durant le projet.
 type Config struct {
 	WindowTitle              string
+	Debug                    bool
+	Fullscreen               bool
 	WindowSizeX, WindowSizeY int
 	ParticleImage            string
-	Debug                    bool
 	InitNumParticles         int
+	MaxNumParticles          int
+	SpawnRate                float64
+	TimeToSawn               int
 	RandomSpawn              bool
 	RandomColor              bool
 	RandomOpacity            bool
-	ColorR                   float64
-	ColorG                   float64
-	ColorB                   float64
-	Opacity                  float64
+	RandomScale              bool
+	RandomSpeed              bool
 	SpawnX, SpawnY           int
-	SpawnRate                float64
-	SpawnFrameRate           int
-	Fullscreen               bool
+	ColorR, ColorG, ColorB   float64
+	Opacity                  float64
+	ScaleX, ScaleY           float64
+	SpeedX, SpeedY           float64
+	MaxSpeedX, MaxSpeedY     float64
 }
 
 var General Config
