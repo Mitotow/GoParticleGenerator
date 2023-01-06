@@ -20,7 +20,14 @@ func main() {
 	assets.Get()
 
 	ebiten.SetWindowTitle(config.General.WindowTitle)
-	ebiten.SetWindowSize(config.General.WindowSizeX, config.General.WindowSizeY)
+	ebiten.SetWindowResizingMode(ebiten.WindowResizingModeDisabled)
+
+	if config.General.Fullscreen {
+		ebiten.SetFullscreen(true)
+		config.General.WindowSizeX, config.General.WindowSizeY = ebiten.ScreenSizeInFullscreen()
+	} else {
+		ebiten.SetWindowSize(config.General.WindowSizeX, config.General.WindowSizeY)
+	}
 
 	g := game{system: particles.NewSystem()}
 
