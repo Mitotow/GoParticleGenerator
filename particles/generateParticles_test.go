@@ -5,45 +5,68 @@ import (
 	"math/rand"
 	"project-particles/config"
 	"testing"
+	"time"
 )
 
-/** Test for the GenerateParticles function **/
-// Check if the number of particules is equal to the InitNumParticles in the config.json
+// This function is used to get the config.json file, because the main.go is not used when go test command is execute
+func init() {
+	config.Get("../config.json")
+}
+
 func Test_GenerateParticles_Number1(t *testing.T) {
 	s := System{Content: list.New()}
-	s.GenerateParticles()
+	s.GenerateParticles(config.General.InitNumParticles)
 	if s.Content.Len() != config.General.InitNumParticles {
-		t.Fail()
+		t.Error("Il y a ", s.Content.Len(), " particules générées, il devrait y en avoir ", config.General.InitNumParticles, ".")
 	}
 }
 
-// Check if for a random number, the generation still work
 func Test_GenerateParticles_Number2(t *testing.T) {
 	s := System{Content: list.New()}
-	x := rand.Intn(100)
+	rand.Seed(time.Now().UnixNano())
+	var x = rand.Intn(100)
 	config.General.InitNumParticles = x
-	s.GenerateParticles()
+	s.GenerateParticles(config.General.InitNumParticles)
 	if s.Content.Len() != x {
-		t.Fail()
+		t.Error("Il y a ", s.Content.Len(), " particules générées, il devrait y en avoir ", x, ".")
 	}
 }
 
-/** Test for the GenerateParticlesWithNumber function **/
-// Check if the number of particules is equal to the InitNumParticles in the config.json
-func Test_GenerateParticlesWithNumber_Number1(t *testing.T) {
+func Test_GenerateParticles_Number3(t *testing.T) {
 	s := System{Content: list.New()}
-	s.GenerateParticlesWithNumber(5)
+	s.GenerateParticles(5)
 	if s.Content.Len() != 5 {
-		t.Fail()
+		t.Error("Il y a ", s.Content.Len(), " particules générées, il devrait y en avoir 5.")
 	}
 }
 
-// Check if for a random number, the generation still work
-func Test_GenerateParticlesWithNumber_Number2(t *testing.T) {
+func Test_GenerateParticles_Number4(t *testing.T) {
 	s := System{Content: list.New()}
-	x := rand.Intn(100)
-	s.GenerateParticlesWithNumber(x)
+	rand.Seed(time.Now().UnixNano())
+	var x = rand.Intn(100)
+	s.GenerateParticles(x)
 	if s.Content.Len() != x {
-		t.Fail()
+		t.Error("Il y a", s.Content.Len(), "particules générées, il devrait y en avoir", x, ".")
+	}
+}
+
+func Test_GenerateParticles_RandomPosition(t *testing.T) {
+	s := System{Content: list.New()}
+	rand.Seed(time.Now().UnixNano())
+	config.General.RandomSpawn = true
+	var n = rand.Intn(100)
+	var p2 *Particle
+	p2 = &Particle{
+		PositionX: float64(config.General.SpawnX),
+		PositionY: float64(config.General.SpawnY),
+	}
+	s.GenerateParticles(n)
+	for e := s.Content.Front(); e != nil; e = e.Next() {
+		p1 := e.Value.(*Particle)
+		t.Log(p1.PositionX, p1.PositionY, "|", p2.PositionX, p2.PositionY)
+		if p1.PositionX == p2.PositionX || p1.PositionY == p2.PositionY {
+			t.Error("Il n'y a pas de génération aléatoire, deux particules aux mêmes coordonnées", p1.PositionX, p1.PositionY)
+		}
+		p2 = p1
 	}
 }

@@ -15,6 +15,7 @@ type Config struct {
 	InitNumParticles         int
 	RandomSpawn              bool
 	RandomColor              bool
+	RandomOpacity            bool
 	ColorR                   float64
 	ColorG                   float64
 	ColorB                   float64

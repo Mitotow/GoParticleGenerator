@@ -6,7 +6,5 @@ import (
 )
 
 func randomPos() (float64, float64) {
-	var wX, wY = config.General.WindowSizeX, config.General.WindowSizeY
-	x, y := rand.Float64()*float64(wX), rand.Float64()*float64(wY) // Create random coordonates
-	return x, y
+	return rand.Float64() * float64(config.General.WindowSizeX), rand.Float64() * float64(config.General.WindowSizeY)
 }

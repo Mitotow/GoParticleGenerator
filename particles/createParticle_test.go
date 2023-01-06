@@ -6,6 +6,11 @@ import (
 	"testing"
 )
 
+// This function is used to get the config.json file, because the main.go is not used when go test command is execute
+func init() {
+	config.Get("../config.json")
+}
+
 func TestSame1(t *testing.T) {
 	p1 := Particle{
 		PositionX: 1,

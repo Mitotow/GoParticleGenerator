@@ -8,9 +8,7 @@ import (
 )
 
 var particuleToAdd float64 = 0
-
 var tts = 0 // Temporisation counter (60 = 1s)
-
 var changeColor = false
 
 // Update mets à jour l'état du système de particules (c'est-à-dire l'état de
