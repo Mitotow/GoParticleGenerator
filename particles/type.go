@@ -22,4 +22,5 @@ type Particle struct {
 	SpeedX                          float64
 	SpeedY                          float64
 	Life                            int
+	Killed                          bool
 }

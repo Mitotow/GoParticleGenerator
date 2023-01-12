@@ -10,6 +10,7 @@ import (
 
 // ParticleImage est une variable globale pour stocker l'image d'une particule
 var ParticleImage *ebiten.Image
+var PImageSizeX, PImageSizeY int
 
 // Get charge en mémoire l'image de la particule. (particle.png)
 // Vous pouvez changer cette image si vous le souhaitez, et même en proposer
@@ -22,4 +23,5 @@ func Get() {
 	if err != nil {
 		log.Fatal("Problem while loading particle image: ", err)
 	}
+	PImageSizeX, PImageSizeY = ParticleImage.Size()
 }

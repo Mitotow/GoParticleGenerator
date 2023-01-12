@@ -29,7 +29,7 @@ func (g *game) Draw(screen *ebiten.Image) {
 	}
 
 	if config.General.Debug {
-		ebitenutil.DebugPrint(screen, fmt.Sprint("Frames : ", math.Round(ebiten.ActualTPS()*100)/100, " | Particules : ", g.system.Content.Len()))
+		ebitenutil.DebugPrint(screen, fmt.Sprint("Frames : ", math.Round(ebiten.ActualTPS()*10000)/10000, " | Particules : ", g.system.Content.Len()))
 	}
 
 }

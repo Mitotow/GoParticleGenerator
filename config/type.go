@@ -19,18 +19,26 @@ type Config struct {
 	TimeToSawn               int
 	EnableLifeSpan           bool
 	LifeSpan                 int
+	KillWhenOutOfScreen      bool
 	SmoothSuppression        bool
+	BetterRandomColor        bool
 	RandomSpawn              bool
 	RandomColor              bool
 	RandomOpacity            bool
 	RandomScale              bool
 	RandomSpeed              bool
+	RandomLifeSpan           bool
 	SpawnX, SpawnY           int
 	ColorR, ColorG, ColorB   float64
 	Opacity                  float64
 	ScaleX, ScaleY           float64
 	SpeedX, SpeedY           float64
+	MaxOpacity, MinOpacity   float64
+	MaxScaleX, MaxScaleY     float64
+	MinScaleX, MinScaleY     float64
 	MaxSpeedX, MaxSpeedY     float64
+	MinSpeedX, MinSpeedY     float64
+	MaxLifeSpan, MinLifeSpan int
 }
 
 var General Config
