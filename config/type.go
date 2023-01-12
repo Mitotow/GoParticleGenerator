@@ -17,6 +17,9 @@ type Config struct {
 	MaxNumParticles          int
 	SpawnRate                float64
 	TimeToSawn               int
+	EnableLifeSpan           bool
+	LifeSpan                 int
+	SmoothSuppression        bool
 	RandomSpawn              bool
 	RandomColor              bool
 	RandomOpacity            bool

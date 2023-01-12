@@ -50,5 +50,6 @@ func createParticle() Particle {
 		Opacity: o,
 		SpeedX:  spX,
 		SpeedY:  spY,
+		Life:    config.General.LifeSpan,
 	}
 }

@@ -21,4 +21,5 @@ type Particle struct {
 	Opacity                         float64
 	SpeedX                          float64
 	SpeedY                          float64
+	Life                            int
 }

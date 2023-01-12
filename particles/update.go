@@ -50,6 +50,26 @@ func (s *System) Update() {
 			p.ColorRed, p.ColorGreen, p.ColorBlue = rand.Float64(), rand.Float64(), rand.Float64()
 		}
 
+		if config.General.EnableLifeSpan {
+			if !config.General.SmoothSuppression {
+				if p.Life < 0 {
+					s.Content.Remove(e)
+					continue
+				}
+				if p.Life == 0 {
+					p.ScaleX, p.ScaleY = 0, 0
+				}
+			} else {
+				if p.Life < -10 {
+					s.Content.Remove(e)
+					continue
+				}
+				if p.Life < 1 {
+					p.ScaleX, p.ScaleY = p.ScaleX-0.1, p.ScaleY-0.1
+				}
+			}
+		}
+
 		if p.InScreen() == false {
 			// Particule is out of the screen
 			if config.General.RandomSpawn == true {
@@ -60,6 +80,8 @@ func (s *System) Update() {
 				p.PositionX, p.PositionY = float64(config.General.SpawnX), float64(config.General.SpawnY)
 			}
 		}
+
+		p.Life--
 	}
 
 	if changeColor == true {

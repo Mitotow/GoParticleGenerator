@@ -26,10 +26,13 @@ Et ensuite vous pourrez lancer le fichier 'project-particles.exe' pour lancer la
 > - WindowSizeY | Largeur de la fenêtre (en pixel)
 > ### <ins>Configuration des particules</ins>
 > - ParticleImage | L'image afficher pour les particules (chemin)
-> - SpawnRate | Nombre de particule par apparition
-> - TimeToSpawn | Fréquence d'apparition des nouvelles particules (60 = 1 second)
 > - InitNumParticles | Le nombre de particule à l'écran au démarrage
 > - MaxNumParticles | Le nombre maximum de particule à l'écran
+> - SpawnRate | Nombre de particule par apparition
+> - TimeToSpawn | Fréquence d'apparition des nouvelles particules (60 = 1 second)
+> - EnableLifeSpan | Activer la durée de vie des particules
+> - LifeSpan | Durée de vie des particules, seulement si EnableLifeSpan est true (60 = 1 second)
+> - SmoothSuppression | Supprime les particules d'une manière plus jolie
 > - RandomSpawn | Apparition des particules à un endroit aléatoire (true/false)
 > - RandomColor | Apparition des particules avec une couleur aléatoire (true/false)
 > - RandomOpacity | Apparition des particules avec une opacité aléatoire (true/false)
