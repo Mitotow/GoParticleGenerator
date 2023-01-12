@@ -43,8 +43,7 @@ Et ensuite vous pourrez lancer le fichier 'project-particles.exe' pour lancer la
 > #### Seulement quand RandomSpawn est false
 > - SpawnX | Gestion de la coordonnée X des particules au spawn (de 0 à longueur de la fenêtre en pixel, -1 = centrer)
 > - SpawnY | Gestion de la coordonnée Y des particules au spawn (de 0 à largeur de la fenêtre en pixel, -1 = centrer)
-> #### Seulement quand RandomColor est false 
-> - BetterRandomColor | Génère des couleurs mieux visibles (ColorR, ColorG, ColorB ne sont pas pris en compte si cette option est true)
+> #### Seulement quand RandomColor est false
 > - ColorR | Gestion de la nuance de Rouge des particules (de 0.0 à 1.0)
 > - ColorG | Gestion de la nuance de Vert des particules (de 0.0 à 1.0)
 > - ColorB | Gestion de la nuance de Bleu des particules (de 0.0 à 1.0)
@@ -56,6 +55,8 @@ Et ensuite vous pourrez lancer le fichier 'project-particles.exe' pour lancer la
 > #### Seulement quand RandomSpeed est false
 > - SpeedX | Gestion de la vitesse horizontale des particules
 > - SpeedY | Gestion de la vitesse verticale des particules
+> #### Seulement quand RandomColor est true
+> - BetterRandomColor | Génère des couleurs mieux visibles (true/false)
 > #### Seulement quand RandomOpacity est true
 > - MaxOpacity | Gestion de la transparence maximale des particules (de 0.0 à 1.0)
 > - MinOpacity | Gestion de la transparence minimale des particules (de 0.0 à 1.0)
