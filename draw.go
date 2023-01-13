@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
+	"image/color"
 	"math"
 	"project-particles/assets"
 	"project-particles/config"
@@ -15,6 +16,8 @@ import (
 // la bibliothèque Ebiten. Cette fonction pourra être légèrement modifiée quand
 // c'est précisé dans le sujet.
 func (g *game) Draw(screen *ebiten.Image) {
+
+	ebitenutil.DrawRect(screen, 0, 0, float64(config.General.WindowSizeX), float64(config.General.WindowSizeY), color.White)
 
 	for e := g.system.Content.Front(); e != nil; e = e.Next() {
 		p, ok := e.Value.(*particles.Particle)

@@ -1,7 +1,6 @@
 package particles
 
 import (
-	"fmt"
 	"project-particles/config"
 )
 
@@ -33,19 +32,32 @@ func (s *System) Update() {
 
 	for e := s.Content.Front(); e != nil; e = e.Next() {
 		// Get each existing particules of the system
-		p := e.Value.(*Particle)
+		p, ok := e.Value.(*Particle)
+
+		if !ok {
+			continue
+		}
 
 		p.PositionY += p.SpeedY // Increase Y position of the particule with a certain speed
 		p.PositionX += p.SpeedX // Same for the X position
 
-		fmt.Println("===================\nPosX :", p.PositionX, "\nPosY :", p.PositionY)
-
 		if p.Killed {
-			s.Content.Remove(e)
+			s.Remove(e)
 		}
 
-		if config.General.EnableLifeSpan {
-			go s.particleSuppression(e) // Utilisation of goroutine for optimisation
+		if !config.General.SmoothSuppression {
+			if p.Life < 0 && config.General.EnableLifeSpan {
+				p.Killed = true
+			}
+			if p.Life == 0 {
+				p.ScaleX, p.ScaleY = 0, 0
+			}
+		} else {
+			if p.Life < -10 || p.ScaleX <= 0 || p.ScaleY <= 0 || p.Opacity <= 0 {
+				s.Remove(e)
+			} else if p.Life < 1 {
+				p.ScaleX, p.ScaleY, p.Opacity = p.ScaleX-0.1, p.ScaleY-0.1, p.Opacity-0.1
+			}
 		}
 
 		if !p.InScreen() {
@@ -61,6 +73,13 @@ func (s *System) Update() {
 			} else {
 				// RandomSpawn disable then move the particule to the choosen coordonates in config.json
 				p.PositionX, p.PositionY = float64(config.General.SpawnX), float64(config.General.SpawnY)
+				if p.PositionX == -1 {
+					p.PositionX = float64(config.General.WindowSizeX) / 2
+				}
+
+				if p.PositionY == -1 {
+					p.PositionY = float64(config.General.WindowSizeY) / 2
+				}
 			}
 		}
 
