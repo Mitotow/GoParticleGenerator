@@ -6,10 +6,8 @@ import (
 
 func createParticle() Particle {
 	p := Particle{
-		PositionX: float64(config.General.SpawnX),
-		PositionY: float64(config.General.SpawnY),
-		Rotation:  config.General.Rotation,
-		ScaleX:    config.General.ScaleX, ScaleY: config.General.ScaleX,
+		Rotation: config.General.Rotation,
+		ScaleX:   config.General.ScaleX, ScaleY: config.General.ScaleX,
 		ColorRed: config.General.ColorR, ColorGreen: config.General.ColorG, ColorBlue: config.General.ColorB,
 		Opacity: config.General.Opacity,
 		SpeedX:  config.General.SpeedX,
@@ -17,12 +15,7 @@ func createParticle() Particle {
 		Life:    config.General.LifeSpan,
 	}
 
-	p.returnSpawn()
-
-	if config.General.RandomSpawn {
-		// RandomSpawn enable
-		p.randomPos() // Create random spawn position
-	}
+	p.setSpawn()
 
 	if config.General.RandomRotation {
 		// RandomRotation enable

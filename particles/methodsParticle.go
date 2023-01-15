@@ -44,13 +44,17 @@ func (p *Particle) randomPos() (float64, float64) {
 	return rand.Float64() * float64(config.General.WindowSizeX), rand.Float64() * float64(config.General.WindowSizeY)
 }
 
-func (p *Particle) returnSpawn() {
-	p.PositionX, p.PositionY = float64(config.General.SpawnX), float64(config.General.SpawnY)
-	if p.PositionX == -1 {
-		p.centerX()
-	}
-	if p.PositionY == -1 {
-		p.centerY()
+func (p *Particle) setSpawn() {
+	if config.General.RandomSpawn {
+		p.randomPos()
+	} else {
+		p.PositionX, p.PositionY = float64(config.General.SpawnX), float64(config.General.SpawnY)
+		if config.General.SpawnCenterX {
+			p.centerX()
+		}
+		if config.General.SpawnCenterY {
+			p.centerY()
+		}
 	}
 }
 
@@ -76,4 +80,13 @@ func (p *Particle) randomScale() {
 // Speed
 func (p *Particle) randomSpeed() {
 	p.SpeedX, p.SpeedY = config.General.MinSpeedX+rand.Float64()*(config.General.MaxSpeedX-config.General.MinSpeedX), config.General.MinSpeedY+rand.Float64()*(config.General.MaxSpeedY-config.General.MinSpeedY)
+}
+
+// Gravity
+func (p *Particle) gravity() {
+	if p.SpeedY < 0 {
+		p.SpeedY += 0.25
+	} else {
+		p.SpeedY += 0.45
+	}
 }

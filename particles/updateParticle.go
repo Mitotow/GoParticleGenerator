@@ -1,10 +1,17 @@
 package particles
 
-import "project-particles/config"
+import (
+	"project-particles/config"
+)
 
 func (p *Particle) update() {
+
 	p.PositionY += p.SpeedY // Increase Y position of the particule with a certain speed
 	p.PositionX += p.SpeedX // Same for the X position
+
+	if config.General.EnableGravityEffect {
+		p.gravity()
+	}
 
 	if config.General.EnableLifeSpan {
 		if config.General.SmoothSuppression {
@@ -34,7 +41,7 @@ func (p *Particle) update() {
 				p.randomPos()
 			} else {
 				// RandomSpawn disable then move the particule to the choosen coordonates in config.json
-				p.returnSpawn()
+				p.setSpawn()
 			}
 		}
 	}

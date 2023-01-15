@@ -38,7 +38,7 @@ func (s *System) Update() {
 		}
 
 		if p.Killed {
-			go s.Remove(e)
+			go s.Content.Remove(e)
 		} else {
 			p.update()
 		}
