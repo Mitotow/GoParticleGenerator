@@ -12,27 +12,31 @@ type Config struct {
 	Debug                    bool
 	Fullscreen               bool
 	WindowSizeX, WindowSizeY int
+	GameMode                 string
 	ParticleImage            string
 	InitNumParticles         int
 	MaxNumParticles          int
 	SpawnRate                float64
-	TimeToSawn               int
+	TimeToSpawn              int
 	EnableLifeSpan           bool
 	LifeSpan                 int
 	KillWhenOutOfScreen      bool
 	SmoothSuppression        bool
-	BetterRandomColor        bool
 	RandomSpawn              bool
+	RandomRotation           bool
 	RandomColor              bool
 	RandomOpacity            bool
 	RandomScale              bool
 	RandomSpeed              bool
 	RandomLifeSpan           bool
 	SpawnX, SpawnY           int
+	Rotation                 float64
 	ColorR, ColorG, ColorB   float64
 	Opacity                  float64
 	ScaleX, ScaleY           float64
 	SpeedX, SpeedY           float64
+	BetterRandomColor        bool
+	MaxRotation, MinRotation float64
 	MaxOpacity, MinOpacity   float64
 	MaxScaleX, MaxScaleY     float64
 	MinScaleX, MinScaleY     float64
