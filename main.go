@@ -29,6 +29,10 @@ func main() {
 		ebiten.SetWindowSize(config.General.WindowSizeX, config.General.WindowSizeY)
 	}
 
+	if config.General.SpawnOnMouse {
+		ebiten.SetCursorShape(ebiten.CursorShapeCrosshair)
+	}
+
 	g := game{system: particles.NewSystem()}
 
 	err := ebiten.RunGame(&g)

@@ -6,6 +6,7 @@ import (
 
 func createParticle() Particle {
 	p := Particle{
+		PositionX: float64(config.General.SpawnX), PositionY: float64(config.General.SpawnY),
 		Rotation: config.General.Rotation,
 		ScaleX:   config.General.ScaleX, ScaleY: config.General.ScaleX,
 		ColorRed: config.General.ColorR, ColorGreen: config.General.ColorG, ColorBlue: config.General.ColorB,

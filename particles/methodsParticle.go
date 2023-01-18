@@ -1,6 +1,7 @@
 package particles
 
 import (
+	"github.com/hajimehoshi/ebiten/v2"
 	"math/rand"
 	"project-particles/config"
 )
@@ -40,15 +41,28 @@ func (p *Particle) randomOpacity() {
 }
 
 // Spawn / Position
-func (p *Particle) randomPos() (float64, float64) {
-	return rand.Float64() * float64(config.General.WindowSizeX), rand.Float64() * float64(config.General.WindowSizeY)
+func (p *Particle) randomPos() {
+	p.PositionX, p.PositionY = rand.Float64()*float64(config.General.WindowSizeX), rand.Float64()*float64(config.General.WindowSizeY)
+}
+
+func (p *Particle) centerX() {
+	p.PositionX = float64(config.General.WindowSizeX / 2)
+}
+
+func (p *Particle) centerY() {
+	p.PositionY = float64(config.General.WindowSizeY / 2)
 }
 
 func (p *Particle) setSpawn() {
+	if config.General.SpawnOnMouse {
+		x, y := ebiten.CursorPosition()
+		p.setPos(float64(x), float64(y))
+		return
+	}
 	if config.General.RandomSpawn {
 		p.randomPos()
 	} else {
-		p.PositionX, p.PositionY = float64(config.General.SpawnX), float64(config.General.SpawnY)
+		p.setPos(float64(config.General.SpawnX), float64(config.General.SpawnY))
 		if config.General.SpawnCenterX {
 			p.centerX()
 		}
@@ -58,12 +72,8 @@ func (p *Particle) setSpawn() {
 	}
 }
 
-func (p *Particle) centerX() {
-	p.PositionX = float64(config.General.WindowSizeX) / 2
-}
-
-func (p *Particle) centerY() {
-	p.PositionY = float64(config.General.WindowSizeY) / 2
+func (p *Particle) setPos(x, y float64) {
+	p.PositionX, p.PositionY = x, y
 }
 
 // Rotation

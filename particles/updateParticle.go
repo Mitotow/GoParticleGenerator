@@ -36,13 +36,7 @@ func (p *Particle) update() {
 			p.Killed = true
 			p.ScaleX, p.ScaleY = 0, 0
 		} else {
-			if config.General.RandomSpawn == true {
-				// RandomSpawn enable then move the particule to random coordonates at the screen
-				p.randomPos()
-			} else {
-				// RandomSpawn disable then move the particule to the choosen coordonates in config.json
-				p.setSpawn()
-			}
+			p.setSpawn()
 		}
 	}
 

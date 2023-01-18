@@ -22,6 +22,7 @@ type Config struct {
 	KillWhenOutOfScreen        bool
 	SmoothSuppression          bool
 	EnableGravityEffect        bool
+	SpawnOnMouse               bool
 	RandomSpawn                bool
 	RandomRotation             bool
 	RandomColor                bool

@@ -14,7 +14,11 @@ func NewSystem() System {
 
 	s := System{Content: list.New()}
 
-	s.GenerateParticles(config.General.InitNumParticles)
+	if !config.General.SpawnOnMouse {
+		s.GenerateParticles(config.General.InitNumParticles)
+	} else {
+		config.General.KillWhenOutOfScreen = true
+	}
 
 	return s
 }
