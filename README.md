@@ -30,11 +30,17 @@ Et ensuite vous pourrez lancer le fichier 'project-particles.exe' pour lancer la
 > - MaxNumParticles | Le nombre maximum de particule à l'écran
 > - SpawnRate | Nombre de particule par apparition
 > - TimeToSpawn | Fréquence d'apparition des nouvelles particules (60 = 1 second)
-> - EnableLifeSpan | Activer la durée de vie des particules
+> - EnableLifeSpan | Activer la durée de vie des particules (true/false)
 > - LifeSpan | Durée de vie des particules, seulement si EnableLifeSpan est true (60 = 1 second)
-> - KillWhenOutOfScreen | Supprimer les particules lorsqu'elles sortent de l'écran
-> - SmoothSuppression | Supprime les particules d'une manière plus jolie
+> - KillWhenOutOfScreen | Supprimer les particules lorsqu'elles sortent de l'écran (true/false)
+> - SmoothSuppression | Supprime les particules d'une manière plus jolie, à utiliser avec le Life Span d'activer (true/false)
+> - EnableGravityEffect | Ajoute un effet de gravité aux particules (true/false)
+> - SpawnOnMouse | Une fois activer, lorsque vous lancez le programme, si vous maintenez clique gauche, des particules spawnerons à la position de votre curseur (true/false)
+> - EnableCollision | Activer le système de collision entre les particules (marche pas très bien avec beaucoup de particule)
+> - SpawnCenterX | Le spawn des particules ce fait au centre sur l'axe X (Seulement si Random Spawn = false)
+> - SpawnCenterY | Le spawn des particules ce fait au centre sur l'axe Y (Seulement si Random Spawn = false)
 > - RandomSpawn | Apparition des particules à un endroit aléatoire (true/false)
+> - RandomRotation | Apparition des particules avec une rotation aléatoire (true/false)
 > - RandomColor | Apparition des particules avec une couleur aléatoire (true/false)
 > - RandomOpacity | Apparition des particules avec une opacité aléatoire (true/false)
 > - RandomScale | Apparition des particules avec une taille aléatoire (true/false)
@@ -43,6 +49,8 @@ Et ensuite vous pourrez lancer le fichier 'project-particles.exe' pour lancer la
 > #### Seulement quand RandomSpawn est false
 > - SpawnX | Gestion de la coordonnée X des particules au spawn (de 0 à longueur de la fenêtre en pixel, -1 = centrer)
 > - SpawnY | Gestion de la coordonnée Y des particules au spawn (de 0 à largeur de la fenêtre en pixel, -1 = centrer)
+> #### Seulement quand RandomRotation est false
+> - Rotation | Degrés de rotation des particules (de 0.0 à 1.0)
 > #### Seulement quand RandomColor est false
 > - ColorR | Gestion de la nuance de Rouge des particules (de 0.0 à 1.0)
 > - ColorG | Gestion de la nuance de Vert des particules (de 0.0 à 1.0)
@@ -57,6 +65,9 @@ Et ensuite vous pourrez lancer le fichier 'project-particles.exe' pour lancer la
 > - SpeedY | Gestion de la vitesse verticale des particules
 > #### Seulement quand RandomColor est true
 > - BetterRandomColor | Génère des couleurs mieux visibles (true/false)
+> #### Seulement quand RandomRotation est true
+> - MaxRotation | Degrés de rotation maximum des particules (de 0.0 à 1.0)
+> - MinRotation | Degrés de rotation minimum des particules (de 0.0 à 1.0)
 > #### Seulement quand RandomOpacity est true
 > - MaxOpacity | Gestion de la transparence maximale des particules (de 0.0 à 1.0)
 > - MinOpacity | Gestion de la transparence minimale des particules (de 0.0 à 1.0)
