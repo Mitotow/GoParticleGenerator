@@ -4,8 +4,11 @@ import (
 	"project-particles/config"
 )
 
+var ParticuleNumber = 0
+
 func createParticle() Particle {
 	p := Particle{
+		Id: ParticuleNumber,
 		PositionX: float64(config.General.SpawnX), PositionY: float64(config.General.SpawnY),
 		Rotation: config.General.Rotation,
 		ScaleX:   config.General.ScaleX, ScaleY: config.General.ScaleX,
@@ -48,6 +51,10 @@ func createParticle() Particle {
 	if config.General.RandomLifeSpan {
 		p.randomLifeSpan()
 	}
+
+	p.Width, p.Height = p.getSize()
+
+	ParticuleNumber++
 
 	return p
 }

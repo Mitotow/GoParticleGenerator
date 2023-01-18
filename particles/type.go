@@ -14,7 +14,9 @@ type System struct {
 // opacité. Vous ajouterez certainement d'autres caractéristiques aux particules
 // durant le projet.
 type Particle struct {
+	Id 								int
 	PositionX, PositionY            float64
+	Width, Height					float64
 	Rotation                        float64
 	ScaleX, ScaleY                  float64
 	ColorRed, ColorGreen, ColorBlue float64
@@ -23,4 +25,5 @@ type Particle struct {
 	SpeedY                          float64
 	Life                            int
 	Killed                          bool
+
 }

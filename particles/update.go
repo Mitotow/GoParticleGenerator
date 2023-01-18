@@ -46,6 +46,10 @@ func (s *System) Update() {
 		if p.Killed {
 			s.Content.Remove(e)
 		} else {
+			if s.Collides(p) && config.General.EnableCollision {
+				p.SpeedX *= -1
+				p.SpeedY *= -1
+			}
 			p.update()
 		}
 

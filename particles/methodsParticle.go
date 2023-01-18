@@ -3,6 +3,7 @@ package particles
 import (
 	"github.com/hajimehoshi/ebiten/v2"
 	"math/rand"
+	"project-particles/assets"
 	"project-particles/config"
 )
 
@@ -99,4 +100,10 @@ func (p *Particle) gravity() {
 	} else {
 		p.SpeedY += 0.45
 	}
+}
+
+// Size (Collision System)
+func (p *Particle) getSize() (float64, float64) {
+	pSizeX, pSizeY := assets.ParticleImage.Size()
+	return float64(pSizeX) * p.ScaleX, float64(pSizeY) * p.ScaleY
 }
