@@ -1,5 +1,9 @@
-# R1.01.SAE.eq01_AMBROISE-Thomas_GOUIN-Charly
-
+# Générateur de particule - Golang
+This project was imported from my university gitlab, here are some informations :
+* 25 Commits
+* 2 Contributors
+* Last update : Jan. 18 2023
+* Still updated : No
 
 ## Pré-requis
 > Golang (à installer sur le site https://go.dev)
