@@ -11,7 +11,7 @@ This project was imported from my university gitlab, here are some informations 
 ## Installation
 Installer le code source sur gitlab directement ou en passant par par le terminal avec la commande suivante :<br>
 ```
-git clone https://gitlab.univ-nantes.fr/pub/but/but1/r1.01/sae/projets/groupe2/r1.01.sae.eq01_ambroise-thomas_gouin-charly.git
+git clone https://github.com/Mitotow/GoParticleGenerator
 ```
 Une fois installer, il faudra ce rendre dans le terminal et aller dans le dossier installer auparavant et executer les commandes suivantes :
 ```
